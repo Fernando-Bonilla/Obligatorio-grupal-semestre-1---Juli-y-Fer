@@ -1,0 +1,284 @@
+/* Estilos generales */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}   
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 36px; /* Aumenta el tamaño del texto para que sea más llamativo */
+    color: #ffffff; /* Cambia el color del texto a un tono más oscuro para mejor legibilidad */
+    text-align: center; /* Centra el texto en la página */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas para un aspecto más destacado */
+    letter-spacing: 2px; /* Añade un poco de espaciado entre letras para mejorar la legibilidad */
+    font-family: 'Arial', sans-serif; /* Cambia la fuente del texto a una sans-serif genérica */
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 1); /* Agrega una sombra suave al texto para resaltarlo */
+}
+
+.cart-link {
+    color: white;
+    text-decoration: none;
+    background-color: #27ae60;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.cart-link:hover {
+    background-color: #219150;
+}
+
+main {
+    padding: 20px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+}
+/*=================Estilos lista categorias=========================*/
+.category-wrapper {
+    background-color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    min-width: 200px;
+    margin-left: 5px;
+    border-radius: 5px;
+
+}
+
+.category-list {
+    list-style: none;
+}
+
+.category-item {
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+    user-select: none;
+}
+
+.games-list {
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/*=================End Estilos lista categorias=========================*/
+
+
+.game {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game img {
+    width: 100%;
+    max-width: 150px; /* Ajusta el tamaño máximo de la imagen */
+    height: 150px;    /* Ajusta la altura fija de la imagen */
+    object-fit: cover; /* Ajusta la imagen para que se adapte al contenedor */
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.add-to-cart {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: auto; /* Empuja el botón hacia la parte inferior del contenedor */
+}
+
+.add-to-cart:hover {
+    background-color: #219150;
+}
+
+/* Estilos Carrito */
+
+.cart-container {
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.cart-items {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-items li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-total {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#checkout {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#checkout:hover {
+    background-color: #219150;
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .cart-link {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .games-list {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .games-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .game {
+        padding: 5px;
+    }
+
+    .add-to-cart {
+        padding: 8px;
+    }
+}
+
+/* Footer */
+
+.footer-container {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.social-icons {
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.newsletter {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter h3 {
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+input[type="email"] {
+    flex: 1;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    padding: 8px 15px;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #24854c;
+}
+
+.small-text {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #ccc;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+
