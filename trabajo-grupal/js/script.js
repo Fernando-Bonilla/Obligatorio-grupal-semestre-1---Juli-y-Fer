@@ -24,16 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 20, name: 'Zuma', price: 18, description: "Un juegaso", imgSrc: "img/zuma.jpg" },
     ];
 
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', () => {
-            let gameId = parseInt(button.parentElement.dataset.id, 10);
-            let game = GAMES.find(game => game.id === gameId);
-            cart.push(game);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert(`${game.name} agregado al carrito.`);
-        });
-    });
-
     function showGamesList(gamesData) {  
 
         let gamesList = document.getElementById("card-template-container");       
@@ -61,6 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
             let addCartButton = document.createElement('button');
             addCartButton.className = 'add-to-cart';
             addCartButton.textContent = 'Agregar al carrito';
+            addCartButton.addEventListener('click', (event) => {
+                let gameId = parseInt(event.target.parentElement.dataset.id);
+                let game = GAMES.find(game => game.id === gameId);
+                cart.push(game);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`${game.name} agregado al carrito.`);
+
+            })
     
             divContainer.appendChild(img);
             divContainer.appendChild(gameTitle);
@@ -68,8 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
             divContainer.appendChild(gamePrice);
             divContainer.appendChild(addCartButton);
             gamesList.appendChild(divContainer);
-        }
+        }        
     }
+
     
     showGamesList(GAMES);
     addCategories(filterCategories(GAMES));

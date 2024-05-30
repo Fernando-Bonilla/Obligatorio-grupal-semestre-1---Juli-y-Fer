@@ -283,3 +283,12 @@ button[type="submit"]:hover {
 
 
 
+/*=================Estilos Admin Page=========================*/
+#title-crear-juego, #title-eliminar-juego{
+    cursor: pointer;
+}
+
+#crear-juego {
+    margin-bottom: 30px;
+}
+/*=================End Estilos Admin Page=========================*/
