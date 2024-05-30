@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     showGamesList(GAMES);
     addCategories(filterCategories(GAMES));
-    //console.log(filterCategories(GAMES));
     addEventOnCategoryItem()
 
     function filterCategories(gamesList) {
