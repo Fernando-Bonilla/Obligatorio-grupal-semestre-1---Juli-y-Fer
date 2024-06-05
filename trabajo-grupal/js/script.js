@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 15, name: 'Undawn', price: 23, description: "Supervivencia en un mundo postapocalíptico.", imgSrc: "img/undawn.jpg", category: "Estrategia", clasificacion: ""},
         { id: 16, name: 'WOW', price: 26, description: "Juego de rol multijugador en línea.", imgSrc: "img/wow.jpg", category: "Estrategia", clasificacion: "M"},
         { id: 17, name: 'GTA 5', price: 13, description: "Mundo abierto con infinitas cosas para hacer.", imgSrc: "img/gta5.jpg", category: "Estrategia", clasificacion: "" },
-        { id: 18, name: 'Guitar Hero 3', price: 11, description: "Juego de música con desafíos emocionantes.", imgSrc: "img/guitarhero.jpg", category: "Estrategia", clasificacion: "" },
+        { id: 18, name: 'Guitar Hero 3', price: 11, description: "Juego de música con desafíos emocionantes.", imgSrc: "img/guitarhero.jpg", category: "Musica", clasificacion: "" },
         { id: 19, name: 'RUST', price: 9, description: "Supervivencia realista lleno de peligros.", imgSrc: "img/rust.jpg", category: "Estrategia", clasificacion: "" },
         { id: 20, name: 'CALL OF DUTY', price: 18, description: "Disparos en primera persona.", imgSrc: "img/Black_Ops_2.png", category: "Estrategia", clasificacion: "" },
     ];
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let divContainer = document.createElement('div');
             divContainer.className = 'game';
             divContainer.setAttribute('data-id', gamesData[i].id);
-                
+
             let img = document.createElement('img');
             img.src = gamesData[i].imgSrc;
             img.alt = 'Juego ${gamesData[i].id}';
