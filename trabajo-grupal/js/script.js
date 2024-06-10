@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {    
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let GAMES = JSON.parse(localStorage.getItem('GAMES')); // usamos el nombre GAMES porque movimos esta variable a un archivo separado, y en todas las funciones estabamos usando este nombre de variable   
-
+    let GAMES = JSON.parse(localStorage.getItem('JUEGOS')); // usamos el nombre GAMES porque movimos esta variable a un archivo separado, y en todas las funciones estabamos usando este nombre de variable   
+    console.log(GAMES)
     /*const GAMES = [
         { id: 1, name: 'Far Cry 6', price: 10, description: "Un juego emocionante lleno de aventuras.", imgSrc: "img/far_cry_6.jpg", category: "Accion", clasificacion: "E"},
         { id: 2, name: 'Far Cry 5', price: 15, description: "Mundo abierto lleno de acción.", imgSrc: "img/far_cry_5.jpg", category: "Accion", clasificacion: "E 10+"},
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
             let gamePrice = document.createElement('p');
             gamePrice.className = 'price';
-            gamePrice.textContent = `US$ ${gamesData[i].price}`;
+            gamePrice.innerHTML = `US$ ${gamesData[i].price}`;
     
             let addCartButton = document.createElement('button');
             addCartButton.className = 'add-to-cart';
@@ -68,10 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
             divContainer.appendChild(gamePrice);
             divContainer.appendChild(addCartButton);
             gamesList.appendChild(divContainer);
-        }        
+        }               
     }
 
-    
     showGamesList(GAMES);
     addCategories(filterCategories(GAMES));
     addEventOnCategoryItem()
