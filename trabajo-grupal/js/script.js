@@ -1,7 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];   
+document.addEventListener('DOMContentLoaded', () => {    
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let GAMES = JSON.parse(localStorage.getItem('GAMES')); // usamos el nombre GAMES porque movimos esta variable a un archivo separado, y en todas las funciones estabamos usando este nombre de variable   
 
-    const GAMES = [
+    /*const GAMES = [
         { id: 1, name: 'Far Cry 6', price: 10, description: "Un juego emocionante lleno de aventuras.", imgSrc: "img/far_cry_6.jpg", category: "Accion", clasificacion: "E"},
         { id: 2, name: 'Far Cry 5', price: 15, description: "Mundo abierto lleno de acción.", imgSrc: "img/far_cry_5.jpg", category: "Accion", clasificacion: "E 10+"},
         { id: 3, name: 'Watch Dogs', price: 20, description: "Mundo genuinamente lleno de codigo.", imgSrc: "img/watch.jpg", category: "Accion", clasificacion: "T"},
@@ -22,10 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 18, name: 'Guitar Hero 3', price: 11, description: "Juego de música con desafíos emocionantes.", imgSrc: "img/guitarhero.jpg", category: "Musica", clasificacion: "" },
         { id: 19, name: 'RUST', price: 9, description: "Supervivencia realista lleno de peligros.", imgSrc: "img/rust.jpg", category: "Estrategia", clasificacion: "" },
         { id: 20, name: 'CALL OF DUTY', price: 18, description: "Disparos en primera persona.", imgSrc: "img/Black_Ops_2.png", category: "Estrategia", clasificacion: "" },
-    ];
+    ];*/
 
     function showGamesList(gamesData) {  
 
+        //let gamesData = JSON.parse(localStorage.getItem('GAMES'))
         let gamesList = document.getElementById("card-template-container");       
         gamesList.innerHTML = "";   
         
@@ -118,36 +120,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 }); 
-
-/*let GAMES = [
-    { id: 1, name: 'Far Cry 6', price: 10, description: "tiro y tiro", imgSrc: "img/far_cry_6.jpg", category: "Accion", clasificacion: "E"},
-    { id: 2, name: 'Far Cry 5', price: 15, description: "tiro y tiro", imgSrc: "img/far_cry_5.jpg", category: "Accion", clasificacion: "E 10+"},
-    { id: 3, name: 'Watch Dogs', price: 20, description: "tiro y tiro", imgSrc: "img/watch.jpg", category: "Accion", clasificacion: "T"},
-    { id: 4, name: 'Star Wars', price: 12, descripcion: "tiro y tiro", imgSrc: "img/star-wars.jpg", category: "Estrategia", clasificacion: "M" },
-    { id: 5, name: 'CSGO 2', price: 18, descripcion: "tiro y tiro", imgSrc: "img/counterstrike_2.jpg", category: "Shooter", clasificacion: "A" },
-    { id: 6, name: 'CS 1.6', price: 22 },
-    { id: 7, name: 'DOOM', price: 25 },
-    { id: 8, name: 'Sims 4', price: 16 },
-    { id: 9, name: 'ARK', price: 19 },
-    { id: 10, name: 'Assetto Corsa', price: 14 },
-    { id: 11, name: 'ZUMA', price: 8 },
-    { id: 12, name: 'FIFA 24', price: 24 },
-    { id: 13, name: 'Phasmophobia', price: 20 },
-    { id: 14, name: 'Cities Skylines', price: 17 },
-    { id: 15, name: 'Undawn', price: 23 },
-    { id: 16, name: 'WOW', price: 26 },
-    { id: 17, name: 'GTA 5', price: 13 },
-    { id: 18, name: 'Guitar Hero 3', price: 11 },
-    { id: 19, name: 'RUST', price: 9 },
-    { id: 20, name: 'Zuma', price: 18, description: "Un juegaso", imgSrc: "img/zuma.jpg" },
-];*/
-
-
-
-
-
-
-
-
-
-

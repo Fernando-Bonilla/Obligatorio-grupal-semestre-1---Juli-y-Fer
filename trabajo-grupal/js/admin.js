@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let imgSrc = document.getElementById('formFileCreateGame').value;
 
         let game = new Game(name, price, description, imgSrc, category, clasificacion);
+        let arrayOfGames = JSON.parse(localStorage.getItem('GAMES'));
+        arrayOfGames.push(game);
+        localStorage.setItem('GAMES', JSON.stringify(arrayOfGames));
+        console.log(arrayOfGames);
+        showGamesList(arrayOfGames);
         
     }       
     
@@ -31,49 +36,8 @@ class Game {
         this._imgSrc = imgSrc;
         this._category = category;
         this._clasificacion = clasificacion;
-    }
-
-    get name(){
-        return this._name;
-    }
-    get price(){
-        return this._price;
-    }
-    get description(){
-        return this._description;
-    }
-    get imgSrc(){
-        return this._imgSrc;
-    }
-    get category(){
-        return this._category;
-    }
-    get clasificacion(){
-        return this._clasificacion;
-    }
-
-
-    set name(new_name){
-        if(new_name === ""){
-            return false;
-        }
-        this._name = new_name;
-    }
-    set price(new_price){
-        this._price = new_price;
-    }
-    set description(new_description){
-        this._description = new_description;
-    }
-    set imgSrc(new_imgSrc){
-        this._imgSrc = new_imgSrc;
-    }
-    set category(new_category){
-        this._category = new_category;
-    }
-    set clasificacion(new_clasificacion){
-        this._clasificacion = new_clasificacion;
-    }
+    }   
+   
 }  
 
 class PersistenceController{
