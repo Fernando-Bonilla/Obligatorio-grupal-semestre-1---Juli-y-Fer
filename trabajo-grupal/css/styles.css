@@ -295,4 +295,23 @@ button[type="submit"]:hover {
 #dropdownWithClasification {
     margin-bottom: 10px;
 }
+
+/*seccion listado de games*/
+td {
+    align-content: center;
+}
+.games-table-wrapper {
+    overflow-y: scroll;
+    max-height: 300px;    
+    margin-bottom: 10px;
+    border: 1px solid #E9ECEF;
+    border-radius: 5px;    
+    padding: 0px 2px 2px 2px; 
+}
+
+thead {
+    position: sticky;
+    top: 0;
+}
 /*=================End Estilos Admin Page=========================*/
+

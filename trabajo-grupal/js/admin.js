@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {   
+    let arrayOfGames = JSON.parse(localStorage.getItem('JUEGOS')); 
+    listGamesInTable(arrayOfGames);
 
     let addGameButton = document.getElementById('crear-juego');
     addGameButton.addEventListener('click', createGame);
 
     function createGame() {     
-        let arrayOfGames = JSON.parse(localStorage.getItem('JUEGOS')); 
-        console.log(arrayOfGames)
+        //let arrayOfGames = JSON.parse(localStorage.getItem('JUEGOS'));         
                  
         let idGame = arrayOfGames.length + 1;
         let nameGame = document.getElementById('formGroupExampleInput').value;
@@ -19,18 +20,58 @@ document.addEventListener('DOMContentLoaded', () => {
         let imgNewPath = `img/${imgSrcGame.replace("C:\\fakepath\\", "")}`;        
 
         let game = {id: idGame, name: nameGame, price: priceGame, description: descriptionGame, imgSrc: imgNewPath, category: categoryGame, clasificacion: clasificationGame};
-        //let game = new Game(name, price, description, imgSrc, category, clasificacion);       
+        //let game = new Game(idGame, name, priceGame, descriptionGame, imgNewPath, categoryGame, clasificationGame);       
         
         arrayOfGames.push(game);           
         localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
-        alert('Juego creado');         
+        alert('Juego creado');  
+        listGamesInTable(arrayOfGames);       
     }  
     
-    function listGames(){
-        
+    function listGamesInTable(games){
+        for(let game of games) {
+            let tableBody = document.getElementById('table-games-listed');
+            
+            let tr = document.createElement('tr');
+            tr.classList.add('game-table-row');  
+
+            //let td = document.createElement('td') 
+
+            let tdInput = document.createElement('td');
+            let input = document.createElement('input')
+            input.classList.add('form-check-input');
+            input.type = "radio";
+            input.name = "flexRadioDefault"
+            input.id = game.id;
+            tdInput.appendChild(input);
+
+            let tdName = document.createElement('td');
+            tdName.innerHTML = game.name;
+            
+            let tdPrice = document.createElement('td');
+            tdPrice.innerHTML = game.price;
+
+            let tdCategory = document.createElement('td');
+            tdCategory.innerHTML = game.category;
+
+            let tdClasification = document.createElement('td');
+            tdClasification.innerHTML = game.clasificacion;
+
+            tr.appendChild(tdInput);
+            tr.appendChild(tdName);
+            tr.appendChild(tdPrice);
+            tr.appendChild(tdCategory);
+            tr.appendChild(tdClasification);
+
+            tableBody.appendChild(tr);
+            
+        }
+
     }
     
 });
+
+
 
 
 
