@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('formGroupExampleInput3').value = "";        
         document.getElementById('select-with-game-clasification').value = document.getElementById('select-with-game-clasification')[0].value;   
         document.getElementById('formGroupExampleInput4').value = "";
-        let imgSrcGame = document.getElementById('formFileCreateGame').value = "";              
+        document.getElementById('formFileCreateGame').value = "";              
 
     }
 
