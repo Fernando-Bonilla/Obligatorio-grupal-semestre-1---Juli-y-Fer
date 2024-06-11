@@ -1,21 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {   
+document.addEventListener('DOMContentLoaded', () => {  
+
     let arrayOfGames = JSON.parse(localStorage.getItem('JUEGOS')); 
     listGamesInTable(arrayOfGames);
 
     let addGameButton = document.getElementById('crear-juego');
     addGameButton.addEventListener('click', createGame);
 
-    function createGame() {     
-        //let arrayOfGames = JSON.parse(localStorage.getItem('JUEGOS'));         
+    function createGame() {                      
                  
         let idGame = arrayOfGames.length + 1;
         let nameGame = document.getElementById('formGroupExampleInput').value;
         let priceGame = document.getElementById('formGroupExampleInput2').value;
-        let descriptionGame = document.getElementById('formGroupExampleInput3').value;
-        //let categoryGame = document.getElementById('formGroupExampleInput4').value;
-        let clasificationGame = document.getElementById('select-with-game-clasification').value;        
-
+        let descriptionGame = document.getElementById('formGroupExampleInput3').value;        
+        let clasificationGame = document.getElementById('select-with-game-clasification').value;    
         let categoryGame = document.getElementById('formGroupExampleInput4').value;
+
         let imgSrcGame = document.getElementById('formFileCreateGame').value;        
         let imgNewPath = `img/${imgSrcGame.replace("C:\\fakepath\\", "")}`;        
 
@@ -30,13 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }  
     
     function listGamesInTable(games){
-        for(let game of games) {
-            let tableBody = document.getElementById('table-games-listed');
+        let tableBody = document.getElementById('table-games-listed');
+        tableBody.innerHTML = "";
+
+        for(let game of games) {            
             
             let tr = document.createElement('tr');
-            tr.classList.add('game-table-row');  
-
-            //let td = document.createElement('td') 
+            tr.classList.add('game-table-row'); 
 
             let tdInput = document.createElement('td');
             let input = document.createElement('input')
@@ -81,15 +80,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    function removeGame() {
+    let removeGameButton = document.getElementById('remove-game-button');
+    removeGameButton.addEventListener('click', () => removeGame(getInputRadioCheckedId()));
+
+    function getInputRadioCheckedId() {
+        let listOfRadioCheck = document.querySelectorAll('.form-check-input');        
+        let inputRadioCheckedId;
+
+        for(let radioCheck of listOfRadioCheck) {
+            if(radioCheck.checked) {
+                inputRadioCheckedId = radioCheck.id;
+            }
+        }
         
+        return inputRadioCheckedId;
+    }
+
+    function removeGame(id) {
+        let indexOfGame;
+
+        for(let game of arrayOfGames) {
+            if(game.id == id){
+                indexOfGame = arrayOfGames.indexOf(game);
+
+                if(confirm('Desea eliminar el juego seleccionado?'))
+                    arrayOfGames.splice(indexOfGame, 1);
+            }
+        }  
+
+        localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
+        let games = JSON.parse(localStorage.getItem('JUEGOS')); 
+        listGamesInTable(games)        
     }
     
 });
-
-
-
-
 
 class Game {
     constructor(id, name, price, description, imgSrc, category, clasificacion) {
