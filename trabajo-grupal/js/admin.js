@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
         arrayOfGames.push(game);           
         localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
         alert('Juego creado');  
-        listGamesInTable(arrayOfGames);       
+        listGamesInTable(arrayOfGames);  
+        cleanAddGameFormInputs()     
     }  
     
     function listGamesInTable(games){
@@ -49,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tdName.innerHTML = game.name;
             
             let tdPrice = document.createElement('td');
-            tdPrice.innerHTML = game.price;
+            tdPrice.innerHTML = `US$ ${game.price}`;
 
             let tdCategory = document.createElement('td');
             tdCategory.innerHTML = game.category;
@@ -67,6 +68,21 @@ document.addEventListener('DOMContentLoaded', () => {
             
         }
 
+    }
+
+    function cleanAddGameFormInputs() {
+
+        document.getElementById('formGroupExampleInput').value = "";
+        document.getElementById('formGroupExampleInput2').value = "";
+        document.getElementById('formGroupExampleInput3').value = "";        
+        document.getElementById('select-with-game-clasification').value = document.getElementById('select-with-game-clasification')[0].value;   
+        document.getElementById('formGroupExampleInput4').value = "";
+        let imgSrcGame = document.getElementById('formFileCreateGame').value = "";              
+
+    }
+
+    function removeGame() {
+        
     }
     
 });
