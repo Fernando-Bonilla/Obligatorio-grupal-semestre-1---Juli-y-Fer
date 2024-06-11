@@ -291,4 +291,8 @@ button[type="submit"]:hover {
 #crear-juego {
     margin-bottom: 30px;
 }
+
+#dropdownWithClasification {
+    margin-bottom: 10px;
+}
 /*=================End Estilos Admin Page=========================*/

@@ -5,8 +5,8 @@
     new Game (2, 'Far Cry 5',  15, "Mundo abierto lleno de acción.", "img/far_cry_5.jpg", "Accion", "E",),
 
 ]*/
-class Preload {
-    static GAMES = [
+//class Preload {
+    export const GAMESLIST = [
         { id: 1, name: 'Far Cry 6', price: 10, description: "Un juego emocionante lleno de aventuras.", imgSrc: "img/far_cry_6.jpg", category: "Accion", clasificacion: "E"},
         { id: 2, name: 'Far Cry 5', price: 15, description: "Mundo abierto lleno de acción.", imgSrc: "img/far_cry_5.jpg", category: "Accion", clasificacion: "E 10+"},
         { id: 3, name: 'Watch Dogs', price: 20, description: "Mundo genuinamente lleno de codigo.", imgSrc: "img/watch.jpg", category: "Accion", clasificacion: "T"},
@@ -28,5 +28,5 @@ class Preload {
         { id: 19, name: 'RUST', price: 9, description: "Supervivencia realista lleno de peligros.", imgSrc: "img/rust.jpg", category: "Estrategia", clasificacion: "" },
         { id: 20, name: 'CALL OF DUTY', price: 18, description: "Disparos en primera persona.", imgSrc: "img/Black_Ops_2.png", category: "Estrategia", clasificacion: "" },
     ];
-}
+//}
 

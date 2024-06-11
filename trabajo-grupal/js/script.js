@@ -1,3 +1,5 @@
+import {GAMESLIST} from './preload.js';
+
 document.addEventListener('DOMContentLoaded', () => {          
     
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -5,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let GAMES = JSON.parse(localStorage.getItem('JUEGOS')) || []; // usamos el nombre GAMES porque movimos esta variable a un archivo separado, y en todas las funciones estabamos usando este nombre de variable   
     console.log(GAMES)
     if(GAMES.length == 0) {
-        GAMES = Preload.GAMES 
+        GAMES = GAMESLIST
         localStorage.setItem('JUEGOS', JSON.stringify(GAMES))
     }    
 
@@ -62,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function filterCategories(gamesList) {
         //crea un array filtrando categorias repetidas
         let singleCategories = [];
-        for(game of gamesList) {
+        for(let game of gamesList) {
             if(singleCategories.includes(game.category) == false) {
                 singleCategories.push(game.category);
             }
@@ -73,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addCategories(categoryList){
         let ul = document.getElementById('category-list-container');
-        for(category of categoryList) {
+        for(let category of categoryList) {
             let li = document.createElement('li');
             li.classList.add('category-item');
             let a = document.createElement('a');
