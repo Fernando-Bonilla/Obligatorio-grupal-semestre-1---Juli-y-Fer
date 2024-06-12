@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let game = {id: idGame, name: nameGame, price: priceGame, description: descriptionGame, imgSrc: imgNewPath, category: categoryGame, clasificacion: clasificationGame};
         //let game = new Game(idGame, name, priceGame, descriptionGame, imgNewPath, categoryGame, clasificationGame);       
         
+        let title = document.getElementById('title-crear-juego');
+        title.innerHTML = 'Crear juego';
+        let button = document.getElementById('crear-juego');
+        button.innerHTML = 'Argegar';
+
         arrayOfGames.push(game);           
         localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
         alert('Juego creado');  
@@ -136,6 +141,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }           
         
     }  
+
+    //Funcion de modificar
+    document.getElementById('modify-game').addEventListener('click', function() {
+        const selectedGame = document.querySelector('input[name="flexRadioDefault"]:checked');        
+        let game = arrayOfGames.filter((game) => game.id == selectedGame.id);              
+        let editingRow;        
+
+        if (selectedGame) {
+            editingRow = selectedGame.parentElement.parentElement; //aca capturamos la row entera, el input guardado en selected game, padre td, padre de td es la row
+            const name = editingRow.cells[1].innerText;
+            let price = parseFloat(editingRow.cells[2].innerHTML.slice(4)); //al capturar el valor en esta celda viene en formato string porque le agregas "US$", entonces capturamos el valor a partir del indice 4 que es donde comienza el numero                        
+            const category = editingRow.cells[3].innerText;
+            const clasificacion = editingRow.cells[4].innerText;             
+
+            document.getElementById('formGroupExampleInput').value = name;
+            document.getElementById('formGroupExampleInput2').value = price;            
+            document.getElementById('formGroupExampleInput3').value = game[0].description;
+            document.getElementById('formGroupExampleInput4').value = category;
+            document.getElementById('select-with-game-clasification').value = clasificacion;            
+            //document.getElementById('formFileCreateGame').value = game[0].imgSrc.replace('img/', "");
+
+            let title = document.getElementById('title-crear-juego');
+            title.innerHTML = 'Modificar juego';
+            let button = document.getElementById('crear-juego');
+            button.innerHTML = 'Modificar';
+
+            //Esto hace que al hacer click en el boton modificar, la pagina haga scroll hasta arriba, que es donde esta el formulario con los datos cargagos para modificar
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+            
+        } else {
+            alert('Por favor, selecciona un juego.');
+        }
+        
+    });
     
 });
 
