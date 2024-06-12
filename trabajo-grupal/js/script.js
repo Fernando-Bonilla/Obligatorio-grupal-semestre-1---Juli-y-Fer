@@ -5,15 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     let GAMES = JSON.parse(localStorage.getItem('JUEGOS')) || []; // usamos el nombre GAMES porque movimos esta variable a un archivo separado, y en todas las funciones estabamos usando este nombre de variable   
-    console.log(GAMES)
+
     if(GAMES.length == 0) {
         GAMES = GAMESLIST
         localStorage.setItem('JUEGOS', JSON.stringify(GAMES))
     }    
 
-    function showGamesList(gamesData) {  
-
-        //let gamesData = JSON.parse(localStorage.getItem('GAMES'))
+    function showGamesList(gamesData) { 
+        
         let gamesList = document.getElementById("card-template-container");       
         gamesList.innerHTML = "";   
         

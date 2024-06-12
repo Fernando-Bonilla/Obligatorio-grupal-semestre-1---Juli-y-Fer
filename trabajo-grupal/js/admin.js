@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  
         let idGame = arrayOfGames.length + 1;
         let nameGame = document.getElementById('formGroupExampleInput').value;
-        let priceGame = document.getElementById('formGroupExampleInput2').value;
+        let priceGame = document.getElementById('formGroupExampleInput2').value;        
         let descriptionGame = document.getElementById('formGroupExampleInput3').value;        
         let clasificationGame = document.getElementById('select-with-game-clasification').value;    
         let categoryGame = document.getElementById('formGroupExampleInput4').value;
@@ -84,7 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
     removeGameButton.addEventListener('click', () => removeGame(getInputRadioCheckedId()));
 
     function getInputRadioCheckedId() {
-        let listOfRadioCheck = document.querySelectorAll('.form-check-input');        
+        let listOfRadioCheck = document.querySelectorAll('.form-check-input'); 
+        console.log(listOfRadioCheck)       
         let inputRadioCheckedId;
 
         for(let radioCheck of listOfRadioCheck) {
@@ -108,10 +109,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }  
 
-        localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
-        let games = JSON.parse(localStorage.getItem('JUEGOS')); 
-        listGamesInTable(games)        
+        //localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
+        //let games = JSON.parse(localStorage.getItem('JUEGOS')); 
+        //listGamesInTable(games)    
+        listGamesInTable(arrayOfGames);     
+        localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));     
     }
+
+    let searchBarGame = document.getElementById('bar-search-game')
+    searchBarGame.addEventListener('keyup', searchGame);
+
+    function searchGame(){                        
+        let searchBarGameValue = document.getElementById('bar-search-game').value.toLowerCase();           
+        
+        if(searchBarGameValue != "") {            
+            let gameWithCoincidence = arrayOfGames.filter((game) => {                        
+                return game.name.toLowerCase().includes(searchBarGameValue) ||                     
+                    game.price.toString().includes(searchBarGameValue) || 
+                    game.category.includes(searchBarGameValue);
+                 
+            });
+            listGamesInTable(gameWithCoincidence);
+            
+        }else {
+            listGamesInTable(arrayOfGames);
+        }           
+        
+    }  
     
 });
 
