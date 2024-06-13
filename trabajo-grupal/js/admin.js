@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getInputRadioCheckedId() {
         let listOfRadioCheck = document.querySelectorAll('.form-check-input'); 
-        console.log(listOfRadioCheck)       
+           
         let inputRadioCheckedId;
 
         for(let radioCheck of listOfRadioCheck) {
@@ -123,7 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
         //let games = JSON.parse(localStorage.getItem('JUEGOS')); 
         //listGamesInTable(games)    
         listGamesInTable(arrayOfGames);     
-        localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));     
+        localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames)); 
+        cleanAddGameFormInputs();      
     }
 
     let searchBarGame = document.getElementById('bar-search-game')
@@ -150,10 +151,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //Funcion que captura los datos del juego a modificar y los carga en los inputs correspondientes
     document.getElementById('modify-game').addEventListener('click', function() {
         const selectedGame = document.querySelector('input[name="flexRadioDefault"]:checked');        
-        let game = arrayOfGames.filter((game) => game.id == selectedGame.id);              
+        //let game = arrayOfGames.filter((game) => game.id == selectedGame.id);              
         let editingRow;        
 
         if (selectedGame) {
+            let game = arrayOfGames.filter((game) => game.id == selectedGame.id);  
             editingRow = selectedGame.parentElement.parentElement; //aca capturamos la row entera, el input guardado en selected game, padre td, padre de td es la row
             const name = editingRow.cells[1].innerText;
             let price = parseFloat(editingRow.cells[2].innerHTML.slice(4)); //al capturar el valor en esta celda viene en formato string porque le agregas "US$", entonces capturamos el valor a partir del indice 4 que es donde comienza el numero                        
