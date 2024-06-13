@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let addGameButton = document.getElementById('crear-juego');
     addGameButton.addEventListener('click', createGame);
 
+    function checkIfHiddenInputIsEmpty() {
+        let hiddenInput = document.getElementById('input-with-id-game');
+        if(hiddenInput.value == ""){
+            createGame();
+        }else{
+            modifyGame(hiddenInput.value);
+        }
+    }
+
     function createGame() {                      
                  
         let idGame = arrayOfGames.length + 1;
@@ -140,9 +149,9 @@ document.addEventListener('DOMContentLoaded', () => {
             listGamesInTable(arrayOfGames);
         }           
         
-    }  
+    }      
 
-    //Funcion de modificar
+    //Funcion que captura los datos del juego a modificar y los carga en los inputs correspondientes
     document.getElementById('modify-game').addEventListener('click', function() {
         const selectedGame = document.querySelector('input[name="flexRadioDefault"]:checked');        
         let game = arrayOfGames.filter((game) => game.id == selectedGame.id);              
@@ -176,10 +185,29 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             
         } else {
-            alert('Por favor, selecciona un juego.');
+            alert('Por favor selecciona un juego.');
         }
         
     });
+
+    function modifyGame(id){
+        let gamesList = JSON.parse(localStorage.getItem('JUEGOS'));
+        let indexGameToBeModify = gamesList.findIndex((game) => game.id == id)
+
+        let newName = document.getElementById('formGroupExampleInput').value;
+        let newPrice = document.getElementById('formGroupExampleInput2').value;
+        let newDescription = document.getElementById('formGroupExampleInput3').value;
+        let newCategory = document.getElementById('formGroupExampleInput4').value;
+        let newClasification = document.getElementById('select-with-game-clasification').value;
+
+        gamesList[indexGameToBeModify].name = newName;
+        gamesList[indexGameToBeModify].price = newPrice;
+        gamesList[indexGameToBeModify].description = newDescription;
+        gamesList[indexGameToBeModify].category = newCategory;
+        gamesList[indexGameToBeModify].clasificacion = newClasification;
+        
+        listGamesInTable(gamesList);
+    }
     
 });
 
