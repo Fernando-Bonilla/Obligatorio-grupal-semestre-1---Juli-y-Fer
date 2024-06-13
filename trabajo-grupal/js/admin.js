@@ -159,7 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('formGroupExampleInput2').value = price;            
             document.getElementById('formGroupExampleInput3').value = game[0].description;
             document.getElementById('formGroupExampleInput4').value = category;
-            document.getElementById('select-with-game-clasification').value = clasificacion;            
+            document.getElementById('select-with-game-clasification').value = clasificacion;  
+            //cargamos el id del game en este input que esta con display = none, 
+            document.getElementById('input-with-id-game').value = game[0].id;            
             //document.getElementById('formFileCreateGame').value = game[0].imgSrc.replace('img/', "");
 
             let title = document.getElementById('title-crear-juego');
@@ -167,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let button = document.getElementById('crear-juego');
             button.innerHTML = 'Modificar';
 
-            //Esto hace que al hacer click en el boton modificar, la pagina haga scroll hasta arriba, que es donde esta el formulario con los datos cargagos para modificar
+            //Esto hace que al hacer click en el boton modificar, la pagina haga scroll hasta arriba, que es donde esta el formulario con los datos cargados para modificar
             window.scrollTo({
                 top: 0,
                 behavior: "smooth",

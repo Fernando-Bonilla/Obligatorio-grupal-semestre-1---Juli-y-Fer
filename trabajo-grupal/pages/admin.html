@@ -52,6 +52,10 @@
                     <label for="formFile" class="form-label">Seleccione una imagen</label>
                     <input class="form-control" type="file" id="formFileCreateGame">                  
                 </div>
+                <!-- Usamos este input que esta escondido, si esta vacio, entonces se crea un juego nuevo, si tiene un valor entonces va a modificar un juego ya creado -->
+                <div class="mb-3">                    
+                    <input type="number" disabled class="form-control" id="input-with-id-game" placeholder="">
+                </div>                
                 <div>                    
                     <button id="crear-juego" class="cart-link">Agregar</button>
                 </div>                

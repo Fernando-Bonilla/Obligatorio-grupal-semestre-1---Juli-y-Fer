@@ -296,6 +296,10 @@ button[type="submit"]:hover {
     margin-bottom: 10px;
 }
 
+#input-with-id-game {
+   /* display: none;*/
+}
+
 /*seccion listado de games*/
 td {
     align-content: center;
