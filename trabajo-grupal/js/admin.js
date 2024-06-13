@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     listGamesInTable(arrayOfGames);
 
     let addGameButton = document.getElementById('crear-juego');
-    addGameButton.addEventListener('click', createGame);
+    addGameButton.addEventListener('click', checkIfHiddenInputIsEmpty);
 
     function checkIfHiddenInputIsEmpty() {
         let hiddenInput = document.getElementById('input-with-id-game');
@@ -28,12 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let imgNewPath = `img/${imgSrcGame.replace("C:\\fakepath\\", "")}`;        
 
         let game = {id: idGame, name: nameGame, price: priceGame, description: descriptionGame, imgSrc: imgNewPath, category: categoryGame, clasificacion: clasificationGame};
-        //let game = new Game(idGame, name, priceGame, descriptionGame, imgNewPath, categoryGame, clasificationGame);       
-        
-        let title = document.getElementById('title-crear-juego');
-        title.innerHTML = 'Crear juego';
-        let button = document.getElementById('crear-juego');
-        button.innerHTML = 'Argegar';
+        //let game = new Game(idGame, name, priceGame, descriptionGame, imgNewPath, categoryGame, clasificationGame);  
 
         arrayOfGames.push(game);           
         localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
@@ -90,7 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('formGroupExampleInput3').value = "";        
         document.getElementById('select-with-game-clasification').value = document.getElementById('select-with-game-clasification')[0].value;   
         document.getElementById('formGroupExampleInput4').value = "";
-        document.getElementById('formFileCreateGame').value = "";              
+        document.getElementById('formFileCreateGame').value = "";  
+        document.getElementById('input-with-id-game').value = "";            
 
     }
 
@@ -206,7 +202,15 @@ document.addEventListener('DOMContentLoaded', () => {
         gamesList[indexGameToBeModify].category = newCategory;
         gamesList[indexGameToBeModify].clasificacion = newClasification;
         
+        alert('Juego modificado');
+        localStorage.setItem('JUEGOS', JSON.stringify(gamesList));
         listGamesInTable(gamesList);
+        cleanAddGameFormInputs();        
+
+        let title = document.getElementById('title-crear-juego');
+        title.innerHTML = 'Crear juego';
+        let button = document.getElementById('crear-juego');
+        button.innerHTML = 'Argegar';
     }
     
 });
