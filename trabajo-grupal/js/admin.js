@@ -1,3 +1,5 @@
+import { Game } from "./classGame.js";
+
 document.addEventListener('DOMContentLoaded', () => {  
 
     let arrayOfGames = JSON.parse(localStorage.getItem('JUEGOS')); 
@@ -7,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addGameButton.addEventListener('click', checkIfHiddenInputIsEmpty);
 
     function checkIfHiddenInputIsEmpty() {
+
         let hiddenInput = document.getElementById('input-with-id-game');
         if(hiddenInput.value == ""){
             createGame();
@@ -27,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let imgSrcGame = document.getElementById('formFileCreateGame').value;        
         let imgNewPath = `img/${imgSrcGame.replace("C:\\fakepath\\", "")}`;        
 
-        let game = {id: idGame, name: nameGame, price: priceGame, description: descriptionGame, imgSrc: imgNewPath, category: categoryGame, clasificacion: clasificationGame};
-        //let game = new Game(idGame, name, priceGame, descriptionGame, imgNewPath, categoryGame, clasificationGame);  
+        //let game = {id: idGame, name: nameGame, price: priceGame, description: descriptionGame, imgSrc: imgNewPath, category: categoryGame, clasificacion: clasificationGame};
+        let game = new Game(idGame, nameGame, priceGame, descriptionGame, imgNewPath, categoryGame, clasificationGame);  
 
         arrayOfGames.push(game);           
         localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
@@ -217,18 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
 
-class Game {
-    constructor(id, name, price, description, imgSrc, category, clasificacion) {
-        this.id = id;
-        this._name = name;
-        this._price = price;
-        this._description = description;
-        this._imgSrc = imgSrc;
-        this._category = category;
-        this._clasificacion = clasificacion;
-    }   
-   
-}  
+
 
 /*class PersistenceController{
     static name(params) {
