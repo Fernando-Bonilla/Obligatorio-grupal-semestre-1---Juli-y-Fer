@@ -1,5 +1,18 @@
+import { Game } from "./classGame.js";
+
 document.addEventListener('DOMContentLoaded', () => {
-    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        //aca de nuevo, cada vez que hago el getItem del local storage tengo que volver a instanciar esos objetos, es decir volver a combertir esos objetos en instancias de la clase Game
+        cartItems = cartItems.map(item => new Game(
+            item._id,
+            item._name,
+            item._price,
+            item._description,
+            item._imgSrc,
+            item._category,
+            item._clasificacion,
+        ))
+
     const cartList = document.querySelector('.cart-items');
     const totalElement = document.getElementById('total');
 
