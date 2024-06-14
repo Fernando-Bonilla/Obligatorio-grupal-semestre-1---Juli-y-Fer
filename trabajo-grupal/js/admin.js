@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }else{
             modifyGame(hiddenInput.value);
         }
-    }
+    }    
 
     function createGame() {                      
                  
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //let game = {id: idGame, name: nameGame, price: priceGame, description: descriptionGame, imgSrc: imgNewPath, category: categoryGame, clasificacion: clasificationGame};
         let game = new Game(idGame, nameGame, priceGame, descriptionGame, imgNewPath, categoryGame, clasificationGame);  
+        console.log(game._name)
 
         arrayOfGames.push(game);           
         localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
