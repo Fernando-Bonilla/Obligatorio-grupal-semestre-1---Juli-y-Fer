@@ -12,7 +12,6 @@ export class Game {
     get id(){
         return this._id;
     }
-
     get name(){
         return this._name
     }
@@ -31,5 +30,33 @@ export class Game {
     get clasificacion(){
         return this._clasificacion
     }
+
+    set id(value){
+        this._id = value;
+    }
+
+    set name(value){
+        this._name = value;
+    }
+
+    set price(value){
+        this._price = value;
+    }
+
+    set description(value){
+        this._description = value;
+    }
+
+    set imgSrc(value){
+        this._imgSrc= value;
+    }
+   
+    set category(value){
+        this._category = value;
+    }
+
+    set clasificacion(value){
+        this._clasificacion = value;
+    }  
    
 } 

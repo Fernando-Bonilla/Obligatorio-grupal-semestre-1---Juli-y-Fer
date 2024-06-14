@@ -2,7 +2,17 @@ import { Game } from "./classGame.js";
 
 document.addEventListener('DOMContentLoaded', () => {  
 
-    let arrayOfGames = JSON.parse(localStorage.getItem('JUEGOS')); 
+    let arrayOfGames = JSON.parse(localStorage.getItem('JUEGOS'));
+    //cada vez que hago el getItem en local storage tengo que volver a instanciar los objetos para poder acceder a sus atributos;
+    arrayOfGames = arrayOfGames.map(gameData => new Game(
+        gameData._id,
+        gameData._name,
+        gameData._price,
+        gameData._description,
+        gameData._imgSrc,
+        gameData._category,
+        gameData._clasificacion,
+    )); 
     listGamesInTable(arrayOfGames);
 
     let addGameButton = document.getElementById('crear-juego');
@@ -32,9 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //let game = {id: idGame, name: nameGame, price: priceGame, description: descriptionGame, imgSrc: imgNewPath, category: categoryGame, clasificacion: clasificationGame};
         let game = new Game(idGame, nameGame, priceGame, descriptionGame, imgNewPath, categoryGame, clasificationGame);  
-        console.log(game._name)
-
-        arrayOfGames.push(game);           
+        
+        arrayOfGames.push(game);   
+        console.log(arrayOfGames);        
         localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
         alert('Juego creado');  
         listGamesInTable(arrayOfGames);  
@@ -194,6 +204,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function modifyGame(id){
         let gamesList = JSON.parse(localStorage.getItem('JUEGOS'));
+        //aca de nuevo, cada vez que hago el getItem del local storage tengo que volver a instanciar esos objetos, es decir volver a combertir esos objetos en instancias de la clase Game
+        gamesList = gamesList.map(gameData => new Game(
+            gameData._id,
+            gameData._name,
+            gameData._price,
+            gameData._description,
+            gameData._imgSrc,
+            gameData._category,
+            gameData._clasificacion,
+        )) 
+
         let indexGameToBeModify = gamesList.findIndex((game) => game.id == id)
 
         let newName = document.getElementById('formGroupExampleInput').value;
