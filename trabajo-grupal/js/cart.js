@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item._imgSrc,
             item._category,
             item._clasificacion,
-        ))
+        ));
 
     const cartList = document.querySelector('.cart-items');
     const totalElement = document.getElementById('total');
