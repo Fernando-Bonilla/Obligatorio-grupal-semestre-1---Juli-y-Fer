@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
             emptyCartMessage.textContent = 'El carrito está vacío. ¡Agrega juegos!';
             cartList.appendChild(emptyCartMessage);
         } else {
-            cartItems.forEach(item => {
+            cartItems.forEach(item => {                
                 const listItem = document.createElement('li');
-                listItem.textContent = `${item.name} - $${item.price}`;
+                listItem.innerHTML = `${item.name} - $${item.price}`;
                 cartList.appendChild(listItem);
                 total += item.price;
             });

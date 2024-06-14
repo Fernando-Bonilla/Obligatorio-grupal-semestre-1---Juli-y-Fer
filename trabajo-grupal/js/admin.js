@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  
         let idGame = arrayOfGames.length + 1;
         let nameGame = document.getElementById('formGroupExampleInput').value;
-        let priceGame = document.getElementById('formGroupExampleInput2').value;        
+        let priceGame = parseFloat(document.getElementById('formGroupExampleInput2').value);              
         let descriptionGame = document.getElementById('formGroupExampleInput3').value;        
         let clasificationGame = document.getElementById('select-with-game-clasification').value;    
         let categoryGame = document.getElementById('formGroupExampleInput4').value;
