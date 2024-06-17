@@ -21,7 +21,7 @@
     <main>
         <div class="cart-container">
             <h3 id="title-crear-juego">Crear juego</h3>
-            <form>
+            <form id="gameForm">
                 <div class="form-container alta-form-container" id="alta-form-container">
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Nombre</label>
@@ -50,7 +50,7 @@
                         </select>
                     </div>   
                     <div class="mb-3">
-                        <label for="formFile" class="form-label" required>Seleccione una imagen</label>
+                        <label for="formFile" class="form-label">Seleccione una imagen</label>
                         <input class="form-control" type="file" id="formFileCreateGame">                  
                     </div>
                     <!-- Usamos este input que esta escondido, si esta vacio, entonces se crea un juego nuevo, si tiene un valor entonces va a modificar un juego ya creado -->

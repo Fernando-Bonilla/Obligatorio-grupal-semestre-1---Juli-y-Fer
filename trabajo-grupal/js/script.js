@@ -4,12 +4,23 @@ import { Game } from './classGame.js';
 document.addEventListener('DOMContentLoaded', () => {          
     
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if(cart.length != 0){
+        cart = cart.map(gameData => new Game(
+            gameData._id,
+            gameData._name,
+            gameData._price,
+            gameData._description,
+            gameData._imgSrc,
+            gameData._category,
+            gameData._clasificacion
+        ));
+    }
 
-    let GAMES = JSON.parse(localStorage.getItem('JUEGOS')) || []; // usamos el nombre GAMES porque movimos esta variable a un archivo separado, y en todas las funciones estabamos usando este nombre de variable   
-    
+    let GAMES = JSON.parse(localStorage.getItem('JUEGOS')) || []; // usamos el nombre GAMES porque movimos esta variable a un archivo separado, y en todas las funciones estabamos usando este nombre de variable       
     if(GAMES.length == 0) {
         GAMES = GAMESLIST;        
-        localStorage.setItem('JUEGOS', JSON.stringify(GAMES));            
+        localStorage.setItem('JUEGOS', JSON.stringify(GAMES));   
+            
         
     }else {
         GAMES = GAMES.map(gameData => new Game(
@@ -68,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gamesList.appendChild(divContainer);
         }               
     }
-
+   
     showGamesList(GAMES);
     addCategories(filterCategories(GAMES));
     addEventOnCategoryItem()

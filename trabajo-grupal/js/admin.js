@@ -1,7 +1,7 @@
 import { Game } from "./classGame.js";
 
 document.addEventListener('DOMContentLoaded', () => {  
-
+    
     let arrayOfGames = JSON.parse(localStorage.getItem('JUEGOS'));
     //cada vez que hago el getItem en local storage tengo que volver a instanciar los objetos para poder acceder a sus atributos;
     arrayOfGames = arrayOfGames.map(gameData => new Game(
@@ -15,7 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
     )); 
     listGamesInTable(arrayOfGames);
 
-    let addGameButton = document.getElementById('crear-juego');
+    let gameForm = document.getElementById('gameForm');
+    gameForm.addEventListener('submit', function(event) {
+        //Prevenir el comportamiento por defecto del formulario con el preventDafault
+        event.preventDefault();
+
+        let hiddenInput = document.getElementById('input-with-id-game');
+        if(hiddenInput.value === ""){
+            createGame();
+        }else{
+            modifyGame(hiddenInput.value);
+        }
+    });
+    /*let addGameButton = document.getElementById('crear-juego');
     addGameButton.addEventListener('click', checkIfHiddenInputIsEmpty);
 
     function checkIfHiddenInputIsEmpty() {
@@ -26,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }else{
             modifyGame(hiddenInput.value);
         }
-    }    
+    } */
 
     function createGame() {                      
                  
