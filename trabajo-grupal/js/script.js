@@ -3,6 +3,19 @@ import { Game } from './classGame.js';
 
 document.addEventListener('DOMContentLoaded', () => {          
     
+    let cartAcumulated = JSON.parse(localStorage.getItem('cartAcumulated')) || [];
+    if(cartAcumulated.length != 0){  
+        cartAcumulated = cartAcumulated.map(gameData => new Game(
+            gameData._id,
+            gameData._name,
+            gameData._price,
+            gameData._description,
+            gameData._imgSrc,
+            gameData._category,
+            gameData._clasificacion,
+        ));       
+    }
+
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     if(cart.length != 0){
         cart = cart.map(gameData => new Game(
@@ -12,15 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
             gameData._description,
             gameData._imgSrc,
             gameData._category,
-            gameData._clasificacion
+            gameData._clasificacion,
         ));
     }
 
     let GAMES = JSON.parse(localStorage.getItem('JUEGOS')) || []; // usamos el nombre GAMES porque movimos esta variable a un archivo separado, y en todas las funciones estabamos usando este nombre de variable       
     if(GAMES.length == 0) {
         GAMES = GAMESLIST;        
-        localStorage.setItem('JUEGOS', JSON.stringify(GAMES));   
-            
+        localStorage.setItem('JUEGOS', JSON.stringify(GAMES));               
         
     }else {
         GAMES = GAMES.map(gameData => new Game(
@@ -65,9 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 let gameId = parseInt(event.target.parentElement.dataset.id);
                 let game = GAMES.find(game => game.id === gameId);
                 cart.push(game); 
-                console.log(cart)               
+                //console.log(cart)               
                 localStorage.setItem('cart', JSON.stringify(cart));
                 alert(`${game.name} agregado al carrito.`);
+
+                cartAcumulated.push(game);
+                localStorage.setItem('cartAcumulated', JSON.stringify(cartAcumulated));
+                console.log(cartAcumulated);
 
             })
     

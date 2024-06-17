@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let gameForm = document.getElementById('gameForm');
     gameForm.addEventListener('submit', function(event) {
-        //Prevenir el comportamiento por defecto del formulario con el preventDafault
+        //Evitamos el comportamiento por defecto del formulario con el preventDafault
         event.preventDefault();
 
         let hiddenInput = document.getElementById('input-with-id-game');
