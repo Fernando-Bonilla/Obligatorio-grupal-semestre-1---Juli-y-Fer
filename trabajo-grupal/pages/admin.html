@@ -21,45 +21,47 @@
     <main>
         <div class="cart-container">
             <h3 id="title-crear-juego">Crear juego</h3>
-            <div class="form-container alta-form-container" id="alta-form-container">
-                <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Mortal Kombat 3">
+            <form>
+                <div class="form-container alta-form-container" id="alta-form-container">
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Mortal Kombat 3" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Precio</label>
+                        <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="US$ 10" required min="1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput3" class="form-label">Descripcion</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Juego de aventura grafica y accion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput4" class="form-label">Categoria</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Accion" required>
+                    </div>
+                    <div id="dropdownWithClasification" class="dropdown">
+                        <select id="select-with-game-clasification" class="form-select" aria-label="Default select example" required>
+                            <option selected disabled>Clasificacion</option>
+                            <option value="E">E</option>
+                            <option value="E 10+">E 10+</option>
+                            <option value="T">T</option>
+                            <option value="M">M</option>
+                            <option value="A">A</option>
+                        </select>
+                    </div>   
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label" required>Seleccione una imagen</label>
+                        <input class="form-control" type="file" id="formFileCreateGame">                  
+                    </div>
+                    <!-- Usamos este input que esta escondido, si esta vacio, entonces se crea un juego nuevo, si tiene un valor entonces va a modificar un juego ya creado -->
+                    <div class="mb-3">                    
+                        <input type="number" disabled class="form-control" id="input-with-id-game" placeholder="">
+                    </div>                
+                    <div>                    
+                        <button id="crear-juego" type="submit" class="cart-link">Agregar</button>
+                    </div>                
                 </div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput2" class="form-label">Precio</label>
-                    <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="US$ 10">
-                </div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput3" class="form-label">Descripcion</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Juego de aventura grafica y accion">
-                </div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput4" class="form-label">Categoria</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Accion">
-                </div>
-                <div id="dropdownWithClasification" class="dropdown">
-                    <select id="select-with-game-clasification" class="form-select" aria-label="Default select example">
-                        <option selected disabled>Clasificacion</option>
-                        <option value="E">E</option>
-                        <option value="E 10+">E 10+</option>
-                        <option value="T">T</option>
-                        <option value="M">M</option>
-                        <option value="A">A</option>
-                      </select>
-                </div>   
-                <div class="mb-3">
-                    <label for="formFile" class="form-label">Seleccione una imagen</label>
-                    <input class="form-control" type="file" id="formFileCreateGame">                  
-                </div>
-                <!-- Usamos este input que esta escondido, si esta vacio, entonces se crea un juego nuevo, si tiene un valor entonces va a modificar un juego ya creado -->
-                <div class="mb-3">                    
-                    <input type="number" disabled class="form-control" id="input-with-id-game" placeholder="">
-                </div>                
-                <div>                    
-                    <button id="crear-juego" class="cart-link">Agregar</button>
-                </div>                
-            </div>
+            </form>
 
             <h3 id="title-list-games">Listado de juegos</h3>
             <div class="user-table-and-search-bar-container">

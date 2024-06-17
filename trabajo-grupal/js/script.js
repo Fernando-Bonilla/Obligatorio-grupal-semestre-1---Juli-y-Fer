@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
             addCartButton.addEventListener('click', (event) => {
                 let gameId = parseInt(event.target.parentElement.dataset.id);
                 let game = GAMES.find(game => game.id === gameId);
-                cart.push(game);                
+                cart.push(game); 
+                console.log(cart)               
                 localStorage.setItem('cart', JSON.stringify(cart));
                 alert(`${game.name} agregado al carrito.`);
 

@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //let game = {id: idGame, name: nameGame, price: priceGame, description: descriptionGame, imgSrc: imgNewPath, category: categoryGame, clasificacion: clasificationGame};
         let game = new Game(idGame, nameGame, priceGame, descriptionGame, imgNewPath, categoryGame, clasificationGame);  
-        
+                
         arrayOfGames.push(game);   
-        console.log(arrayOfGames);        
+        //console.log(arrayOfGames);        
         localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
         alert('Juego creado');  
         listGamesInTable(arrayOfGames);  
@@ -204,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function modifyGame(id){
         let gamesList = JSON.parse(localStorage.getItem('JUEGOS'));
+        console.log(gamesList)
         //aca de nuevo, cada vez que hago el getItem del local storage tengo que volver a instanciar esos objetos, es decir volver a combertir esos objetos en instancias de la clase Game
         gamesList = gamesList.map(gameData => new Game(
             gameData._id,
@@ -214,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gameData._category,
             gameData._clasificacion,
         )) 
+        console.log(gamesList)
 
         let indexGameToBeModify = gamesList.findIndex((game) => game.id == id)
 

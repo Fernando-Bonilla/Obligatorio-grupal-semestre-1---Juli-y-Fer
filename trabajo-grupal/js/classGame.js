@@ -57,6 +57,7 @@ export class Game {
 
     set clasificacion(value){
         this._clasificacion = value;
-    }  
+    }
+
    
 } 
