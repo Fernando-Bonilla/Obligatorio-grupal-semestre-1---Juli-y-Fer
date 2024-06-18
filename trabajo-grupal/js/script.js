@@ -1,50 +1,7 @@
 import { GAMESLIST } from './preload.js';
 import { Game } from './classGame.js';
-
-
-const userPurchases = {
-    juan: [],
-    pepe: [],
-    roque: [],
-};
-
-function CheckUser() {
-    const userSelect = document.getElementById('userSelect');
-    const selectedUser = userSelect.value.toLowerCase();
-    AsignItemsToUser(selectedUser);
-}
-
-function addPurchase() {
-    const userSelect = document.getElementById('userSelect');
-    const selectedUser = userSelect.value;
-    const purchaseInput = document.getElementById('purchaseInput');
-    const purchase = purchaseInput.value;
-
-    if (purchase) {
-        userPurchases[selectedUser].push(purchase);
-        purchaseInput.value = '';
-        CheckUser();
-    } else {
-        alert('Por favor, ingrese una compra.');
-    }
-}
-
-function AsignItemsToUser(user) {
-    const reportsDiv = document.getElementById('reports');
-    reportsDiv.innerHTML = '';
-
-    if (userPurchases[user] && userPurchases[user].length > 0) {
-        const ul = document.createElement('ul');
-        userPurchases[user].forEach(purchase => {
-            const li = document.createElement('li');
-            li.textContent = purchase;
-            ul.appendChild(li);
-        });
-        reportsDiv.appendChild(ul);
-    } else {
-        reportsDiv.textContent = 'No hay compras para este usuario.';
-    }
-}
+import { userPurchases } from "./purchases.js";
+import { CheckUser } from "./purchases.js";
 
 document.addEventListener('DOMContentLoaded', () => {          
     
