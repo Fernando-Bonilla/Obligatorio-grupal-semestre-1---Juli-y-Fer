@@ -1,9 +1,9 @@
 import { GAMESLIST } from './preload.js';
 import { Game } from './classGame.js';
 import { userPurchases } from "./purchases.js";
-import { CheckUser } from "./purchases.js";
+import { CheckUserId } from "./purchases.js";
 
-document.addEventListener('DOMContentLoaded', () => {          
+document.addEventListener('DOMContentLoaded', () => {     
     
     let cartAcumulated = JSON.parse(localStorage.getItem('cartAcumulated')) || [];
     if(cartAcumulated.length != 0){  
@@ -78,14 +78,22 @@ document.addEventListener('DOMContentLoaded', () => {
             addCartButton.addEventListener('click', (event) => {
                 let gameId = parseInt(event.target.parentElement.dataset.id);
                 let game = GAMES.find(game => game.id === gameId);
-                cart.push(game); 
-                //console.log(cart)               
+
+                //capturo el id del usuario que esta haciendo la compra
+                let userSelectedID = CheckUserId();   
+                //buesco el index mediante id del usuario que esta haciendo la compra             
+                let indexUserSelected = userPurchases.findIndex(user => user.id == userSelectedID);
+                //agrego a ese usuario el game que compró
+                userPurchases[indexUserSelected].items.push(game);                
+                alert(`${game.name} agregado al carrito de ${userPurchases[indexUserSelected].name.charAt(0).toUpperCase() + userPurchases[indexUserSelected].name.slice(1)}`);
+
+                /*cart.push(game);                              
                 localStorage.setItem('cart', JSON.stringify(cart));
-                alert(`${game.name} agregado al carrito.`);
+                alert(`${game.name} agregado al carrito.`);*/
 
                 cartAcumulated.push(game);
-                localStorage.setItem('cartAcumulated', JSON.stringify(cartAcumulated));
-                console.log(cartAcumulated);
+                localStorage.setItem('userPurchases', JSON.stringify(userPurchases));
+                localStorage.setItem('cartAcumulated', JSON.stringify(cartAcumulated));                               
 
             })
     
@@ -95,12 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
             divContainer.appendChild(gamePrice);
             divContainer.appendChild(addCartButton);
             gamesList.appendChild(divContainer);
-        }               
-    }
-   
-    showGamesList(GAMES);
-    addCategories(filterCategories(GAMES));
-    addEventOnCategoryItem()
+        }         
+
+    }    
 
     function filterCategories(gamesList) {
         //crea un array filtrando categorias repetidas
@@ -143,6 +148,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }))
     }
+
+    showGamesList(GAMES);
+    addCategories(filterCategories(GAMES));
+    addEventOnCategoryItem()
 
     
 }); 
