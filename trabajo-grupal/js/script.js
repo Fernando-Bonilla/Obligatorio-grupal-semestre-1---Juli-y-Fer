@@ -46,7 +46,19 @@ document.addEventListener('DOMContentLoaded', () => {
             gameData._category,
             gameData._clasificacion
         ));
-    }      
+    }
+    //Aca capturamos el id del usuario seleccionado que esta haciendo la compra
+    let userIdCurrentlySelected = parseInt(CheckUserId());
+    localStorage.setItem('userIdCurrentlySelected', JSON.stringify(userIdCurrentlySelected));
+    
+    //Aca nos aseguramos de capturar el id si cambia de usuario
+    let selectBoxWitUser = document.getElementById('userSelect')
+    selectBoxWitUser.addEventListener('change', (e) =>{        
+        let userIdCurrentlySelected = parseInt(CheckUserId());
+        localStorage.setItem('userIdCurrentlySelected', JSON.stringify(userIdCurrentlySelected));
+        //console.log(userIdCurrentlySelected) 
+    })   
+    
     
     function showGamesList(gamesData) {         
         

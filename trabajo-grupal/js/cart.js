@@ -1,7 +1,42 @@
 import { Game } from "./classGame.js";
+import { userPurchases } from "./purchases.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    let userIdCurrentlySelected = JSON.parse(localStorage.getItem('userIdCurrentlySelected')) || [];
+    console.log(userIdCurrentlySelected)
+    let usersPurchases = JSON.parse(localStorage.getItem('userPurchases')) || userPurchases;            
+
+    let indexUser = usersPurchases.findIndex(user => user.id == userIdCurrentlySelected);    
+    
+    let cartList = document.querySelector('.cart-items');
+    const totalElement = document.getElementById('total');    
+    
+    function updateCart() {
+        cartList.innerHTML = '';
+        let total = 0;
+
+        if(usersPurchases[indexUser].items.length == 0){
+            console.log('no entra al vacio')
+            const emptyCartMessage = document.createElement('li');
+            emptyCartMessage.textContent = 'El carrito de este usuario esta vacío. ¡Agrega juegos!';
+            cartList.appendChild(emptyCartMessage);
+
+        }else {
+            usersPurchases.forEach(items => {                
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `${items._name} - $${items._price}`;
+                cartList.appendChild(listItem);
+                total += items._price;
+            });
+        }
+        totalElement.textContent = `$${total}`;
+    }
+
+    updateCart();
+
+
+    /*let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
         //aca de nuevo, cada vez que hago el getItem del local storage tengo que volver a instanciar esos objetos, es decir volver a combertir esos objetos en instancias de la clase Game
         cartItems = cartItems.map(item => new Game(
             item._id,
@@ -44,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartList.innerHTML = "";
     });
 
-    updateCart();
+    updateCart();*/
     
 });
 
