@@ -27,22 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
             modifyGame(hiddenInput.value);
         }
     });
-    /*let addGameButton = document.getElementById('crear-juego');
-    addGameButton.addEventListener('click', checkIfHiddenInputIsEmpty);
 
-    function checkIfHiddenInputIsEmpty() {
-
-        let hiddenInput = document.getElementById('input-with-id-game');
-        if(hiddenInput.value == ""){
-            createGame();
-        }else{
-            modifyGame(hiddenInput.value);
-        }
-    } */
-
-    function createGame() {                      
-                 
-        let idGame = arrayOfGames.length + 1;
+    function createGame() {                 
+        
+        let idGame = Math.max(...arrayOfGames.map(game => game.id)) + 1;         
+        
         let nameGame = document.getElementById('formGroupExampleInput').value;
         let priceGame = parseFloat(document.getElementById('formGroupExampleInput2').value);              
         let descriptionGame = document.getElementById('formGroupExampleInput3').value;        

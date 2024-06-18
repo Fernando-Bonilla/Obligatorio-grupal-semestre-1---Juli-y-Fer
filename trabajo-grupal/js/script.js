@@ -1,4 +1,4 @@
-import {GAMESLIST} from './preload.js';
+import { GAMESLIST } from './preload.js';
 import { Game } from './classGame.js';
 
 document.addEventListener('DOMContentLoaded', () => {          
