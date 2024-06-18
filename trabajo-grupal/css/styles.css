@@ -61,6 +61,34 @@ main {
     display: flex;
     flex-direction: row;
 }
+
+/*=================Estilos Users selectbox =========================*/
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.game {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.game img {
+    width: 100px;
+    height: auto;
+}
+.price {
+    font-weight: bold;
+}
+.report-section {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
 /*=================Estilos lista categorias=========================*/
 .category-wrapper {
     background-color: #2c3e50;

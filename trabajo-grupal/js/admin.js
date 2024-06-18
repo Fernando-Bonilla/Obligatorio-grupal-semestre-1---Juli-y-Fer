@@ -44,8 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //let game = {id: idGame, name: nameGame, price: priceGame, description: descriptionGame, imgSrc: imgNewPath, category: categoryGame, clasificacion: clasificationGame};
         let game = new Game(idGame, nameGame, priceGame, descriptionGame, imgNewPath, categoryGame, clasificationGame);  
                 
-        arrayOfGames.push(game);   
-        //console.log(arrayOfGames);        
+        arrayOfGames.push(game);                  
         localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
         alert('Juego creado');  
         listGamesInTable(arrayOfGames);  
