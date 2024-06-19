@@ -1,11 +1,12 @@
 import { Game } from "./classGame.js";
-import { userPurchases } from "./purchases.js";
+import { users } from "./purchases.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
     let userIdCurrentlySelected = JSON.parse(localStorage.getItem('userIdCurrentlySelected')) || [];
-    console.log(userIdCurrentlySelected)
-    let usersPurchases = JSON.parse(localStorage.getItem('userPurchases')) || userPurchases;            
+    //console.log(userIdCurrentlySelected)
+    let usersPurchases = JSON.parse(localStorage.getItem('userPurchases')) || users;    
+    console.log(usersPurchases)        
 
     let indexUser = usersPurchases.findIndex(user => user.id == userIdCurrentlySelected);    
     
@@ -23,17 +24,33 @@ document.addEventListener('DOMContentLoaded', () => {
             cartList.appendChild(emptyCartMessage);
 
         }else {
-            usersPurchases.forEach(items => {                
+            usersPurchases[indexUser].items.forEach(item => {
+                //console.log('entra')
                 const listItem = document.createElement('li');
-                listItem.innerHTML = `${items._name} - $${items._price}`;
+                listItem.innerHTML = `${item._name} - $${item._price}`;
                 cartList.appendChild(listItem);
-                total += items._price;
+                total += item._price;
             });
+            
         }
         totalElement.textContent = `$${total}`;
     }
 
     updateCart();
+
+    document.getElementById('checkout').addEventListener('click', () => {
+        if(usersPurchases[indexUser].items.length > 0) {
+            alert('Gracias por su compra.');
+            usersPurchases[indexUser].items = [];
+            console.log(usersPurchases[indexUser].items)
+            localStorage.setItem('userPurchases', JSON.stringify(usersPurchases));
+            //localStorage.removeItem('userPurchases');        
+            totalElement.textContent = "";
+            cartList.innerHTML = "";
+
+        }
+        
+    });
 
 
     /*let cartItems = JSON.parse(localStorage.getItem('cart')) || [];

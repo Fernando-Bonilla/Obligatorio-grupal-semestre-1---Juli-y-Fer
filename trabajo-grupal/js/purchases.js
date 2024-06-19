@@ -1,5 +1,5 @@
 
-export let userPurchases = [
+export let users = [
     {id: 10, name: 'juan', items:[]},
     {id: 11, name: 'pepe', items:[]},
     {id: 12, name: 'roke', items:[]}

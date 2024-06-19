@@ -1,6 +1,6 @@
 import { GAMESLIST } from './preload.js';
 import { Game } from './classGame.js';
-import { userPurchases } from "./purchases.js";
+import { users } from "./purchases.js";
 import { CheckUserId } from "./purchases.js";
 
 document.addEventListener('DOMContentLoaded', () => {     
@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //console.log(userIdCurrentlySelected) 
     })   
     
+    let userPurchases = JSON.parse(localStorage.getItem('userPurchases')) || users;
     
     function showGamesList(gamesData) {         
         
