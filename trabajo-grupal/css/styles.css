@@ -372,5 +372,22 @@ thead {
     background-color: #19c98e;
 }
 
+/*Contenedor grafica de barras*/
+
+.chart-bar-wrapper {
+    position: relative;
+    width: 100%; 
+    height: 400px; 
+    
+}
+
+.bar-chart{
+    padding: 20px;
+    max-width: 450px;
+    max-height: 600px;
+    
+}
+
+
 /*=================End Estilos Reports Page=========================*/
 
