@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let salesPerGame = [];
 
-    function calculateSalesPerGame(netSellingAcumulated){     
+    function calculateSalesPerGame(netSellingAcumulatedParameter){     
 
-        netSellingAcumulated.forEach((gameAcumulated) => {   
+        netSellingAcumulatedParameter.forEach((gameAcumulated) => {   
             //Crea un objeto gameItem para cada item de netSellingAcumulated
             let gameItem = {id: gameAcumulated.id, name: gameAcumulated.name, price: gameAcumulated.price, total: gameAcumulated.price, unitsSelling: 1};
         
@@ -37,24 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 salesPerGame.push(gameItem);
             }
         });
-        console.log(salesPerGame) 
+        
         return salesPerGame;  
     }
 
     calculateSalesPerGame(netSellingAcumulated);
-    
 
+    
     //Uso de graficas 
     const ctx = document.getElementById('myChart');
 
     new Chart(ctx, {
         type: 'bar',
         data: {            
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: salesPerGame.map(game => game.name),
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 2
+                label: 'Ventas por juego',
+                data: salesPerGame.map(game => game.unitsSelling), //netSellingAcumulated.map(game => game.unitsSelling),
+                borderWidth: 2,
             }]
         },
         options: {
