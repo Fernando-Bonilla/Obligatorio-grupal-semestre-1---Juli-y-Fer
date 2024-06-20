@@ -16,49 +16,33 @@ document.addEventListener('DOMContentLoaded', () => {
             item._clasificacion,
         )); 
     }
-
-    console.log(netSellingAcumulated)
     
-    let salesPerGame = []
-    let gameItem = {}
+    let salesPerGame = [];
 
-    netSellingAcumulated.map((gameAcumulated) => {   
-                
-        //aca recorro la variable netSellingAcumulated, y por cada item adentro de eso creo un objeto gameItem compuesto por lo que se le pasa
-        gameItem = {id: gameAcumulated.id, name: gameAcumulated.name, total: gameAcumulated.price, unitsSelling: 1};        
+    function calculateSalesPerGame(netSellingAcumulated){     
+
+        netSellingAcumulated.forEach((gameAcumulated) => {   
+            //Crea un objeto gameItem para cada item de netSellingAcumulated
+            let gameItem = {id: gameAcumulated.id, name: gameAcumulated.name, price: gameAcumulated.price, total: gameAcumulated.price, unitsSelling: 1};
         
-        if(salesPerGame.length == 0) {
-            salesPerGame.push(gameItem);
-            //console.log(salesPerGame)
-            
-        }else {              
-            
-            salesPerGame.map(item => {
-                               
-                if(gameAcumulated.id == item.id){    
-                    console.log(item)                
-                    item.total = item.total + gameAcumulated.price;
-                    item.unitsSelling = item.unitsSelling + 1;                    
-
-                }else {
-                    console.log('entra al else')
-                    salesPerGame.push(gameItem);
-                    console.log(salesPerGame)
-                }
-
-            })
-        } 
-               
+            //Busca si ya existe un item en salesPerGame con el mismo id
+            let existingGameItem = salesPerGame.find(item => item.id === gameAcumulated.id);
         
-    })
-    //console.log(salesPerGame)
-    
-    
-    function calculateSalesPerGame(){       
-
+            if (existingGameItem) {
+                //Si existe, solo actualiza el total y unitsSelling
+                existingGameItem.total = existingGameItem.total + gameAcumulated.price;
+                existingGameItem.unitsSelling = existingGameItem.unitsSelling + 1;
+            } else {
+                //Si no existe, agrega el nuevo gameItem a salesPerGame
+                salesPerGame.push(gameItem);
+            }
+        });
+        console.log(salesPerGame) 
+        return salesPerGame;  
     }
 
-
+    calculateSalesPerGame(netSellingAcumulated);
+    
 
     //Uso de graficas 
     const ctx = document.getElementById('myChart');
