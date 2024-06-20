@@ -375,10 +375,12 @@ thead {
 /*Contenedor grafica de barras*/
 
 .chart-bar-wrapper {
+    display: flex;
     position: relative;
     padding: 30px;
-    width: 100%; 
-    height: 400px; 
+    width: auto; 
+    height: 600px; 
+    align-items: center;
 
 }
 
@@ -386,6 +388,10 @@ thead {
         
     max-width: 50%;
     
+}
+
+canvas {
+    padding: 20px;
 }
 
 

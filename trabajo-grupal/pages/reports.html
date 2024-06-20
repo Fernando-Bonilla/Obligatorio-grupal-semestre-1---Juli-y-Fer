@@ -25,18 +25,14 @@
     </header>
     <main>
         <section class="statistics-wrapper">
-            <div class="statistics-container">
-                <div id="list-selling-games" class="card-container">
-                </div>
-                <div id="best-selling-game" class="card-container">                    
-                </div>
-                <div class="card-container">
-                </div>
+            <h3>Ranking de ventas</h3>
+            <div class="chart-bar-wrapper">                
+                <canvas class="bar-chart" id="units-per-game"></canvas>  
+                <canvas class="bar-chart" id="money-per-game"></canvas>            
             </div>
+            <div class="total-amount">
+                <h4>Ingresos Totales: <span id="total-revenue"></span></h4>
 
-            <div class="chart-bar-wrapper">
-                <h3>Ranking de ventas</h3>
-                <canvas class="bar-chart" id="myChart"></canvas>              
             </div> 
                           
 

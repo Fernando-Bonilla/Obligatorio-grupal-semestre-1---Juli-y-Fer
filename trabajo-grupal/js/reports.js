@@ -42,17 +42,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     calculateSalesPerGame(netSellingAcumulated);
+    console.log(netSellingAcumulated)
 
     
     //Uso de graficas 
-    const ctx = document.getElementById('myChart');
+    const chartBarUnitsPerGame = document.getElementById('units-per-game');
 
-    new Chart(ctx, {
+    new Chart(chartBarUnitsPerGame, {
         type: 'bar',
         data: {            
             labels: salesPerGame.map(game => game.name),
             datasets: [{
-                label: 'Ventas por juego',
+                label: 'Unidades por juego vendidas',
                 data: salesPerGame.map(game => game.unitsSelling), //netSellingAcumulated.map(game => game.unitsSelling),
                 borderWidth: 2,
             }]
@@ -65,6 +66,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+
+    const chartBarMoneyPerGame = document.getElementById('money-per-game');
+
+        new Chart(chartBarMoneyPerGame, {
+            type: 'bar',
+            data: {            
+                labels: salesPerGame.map(game => game.name),
+                datasets: [{
+                    label: 'Ganancias por juego',
+                    data: salesPerGame.map(game => game.total), //netSellingAcumulated.map(game => game.unitsSelling),
+                    borderWidth: 2,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+    
+    let totalRevenueContainer = document.getElementById('total-revenue');
+    let totalRevenue = salesPerGame.reduce((acumulate, item) => acumulate + item.total, 0);   
+    totalRevenueContainer.innerHTML = `$${totalRevenue}`;
+
 });
 
 
