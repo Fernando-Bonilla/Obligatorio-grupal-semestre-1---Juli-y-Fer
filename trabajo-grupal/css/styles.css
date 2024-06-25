@@ -12,6 +12,7 @@ header {
     color: white;
     padding: 10px 0;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .header-container {
@@ -37,6 +38,16 @@ h1 {
     letter-spacing: 2px; /* Añade un poco de espaciado entre letras para mejorar la legibilidad */
     font-family: 'Arial', sans-serif; /* Cambia la fuente del texto a una sans-serif genérica */
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 1); /* Agrega una sombra suave al texto para resaltarlo */
+}
+
+.user-selection-wrapper label{
+    font-size: 28px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+.user-selection-wrapper select{
+    width: 80px;
+    
 }
 
 .cart-link {
