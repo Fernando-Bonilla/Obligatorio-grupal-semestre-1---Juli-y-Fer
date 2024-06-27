@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let indexGameToBeModify = gamesList.findIndex((game) => game.id == id)
 
         let newName = document.getElementById('formGroupExampleInput').value;
-        let newPrice = document.getElementById('formGroupExampleInput2').value;
+        let newPrice = parseFloat(document.getElementById('formGroupExampleInput2').value); //document.getElementById('formGroupExampleInput2').value;  
         let newDescription = document.getElementById('formGroupExampleInput3').value;
         let newCategory = document.getElementById('formGroupExampleInput4').value;
         let newClasification = document.getElementById('select-with-game-clasification').value;
