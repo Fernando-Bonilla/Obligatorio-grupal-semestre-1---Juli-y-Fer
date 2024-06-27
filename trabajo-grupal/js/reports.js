@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         options: {
             scales: {
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true                    
                 }
             }
         }
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {            
                 labels: salesPerGame.map(game => game.name),
                 datasets: [{
-                    label: 'Ganancias por juego',
+                    label: 'Ingresos por juego',
                     data: salesPerGame.map(game => game.total), //netSellingAcumulated.map(game => game.unitsSelling),
                     borderWidth: 2,
                 }]
@@ -83,7 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 5
+                        }
                     }
                 }
             }
