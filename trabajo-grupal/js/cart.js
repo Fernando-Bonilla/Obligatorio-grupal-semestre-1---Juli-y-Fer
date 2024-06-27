@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let total = 0;
 
         if(usersPurchases[indexUser].items.length == 0){
-            console.log('no entra al vacio')
+            //console.log('no entra al vacio')
             const emptyCartMessage = document.createElement('li');
             emptyCartMessage.textContent = 'El carrito de este usuario esta vacío. ¡Agrega juegos!';
             cartList.appendChild(emptyCartMessage);
@@ -57,11 +57,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const listItem = document.createElement('li');
                 listItem.innerHTML = `${item.name} - $${item.price}`;
                 cartList.appendChild(listItem);
-                total += item.price;
+                total += item.price;               
+
             });
+
+            if(usersPurchases[indexUser].items.length > 3) {               
+                total = total * 0.85;             
+                
+            }
             
         }
-        totalElement.textContent = `$${total}`;
+        totalElement.textContent = `$${total.toFixed(2)}`; //el toFixed(2) hace que solo muestre dos decimales despues de la coma
     }
 
     updateCart();
@@ -77,12 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('cartAcumulated', JSON.stringify(cartAcumulated)); 
 
             usersPurchases[indexUser].items = [];
-            console.log(usersPurchases[indexUser].items)
+            //console.log(usersPurchases[indexUser].items)
             localStorage.setItem('userPurchases', JSON.stringify(usersPurchases));
             //localStorage.removeItem('userPurchases');        
             totalElement.textContent = "";
             cartList.innerHTML = "";
-            console.log(cartAcumulated)
+            //console.log(cartAcumulated)
 
         }
         
