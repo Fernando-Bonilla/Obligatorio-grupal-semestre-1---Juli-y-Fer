@@ -39,7 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let categoryGame = document.getElementById('formGroupExampleInput4').value;
 
         let imgSrcGame = document.getElementById('formFileCreateGame').value;        
-        let imgNewPath = `img/${imgSrcGame.replace("C:\\fakepath\\", "")}`;        
+        let imgNewPath = `img/${imgSrcGame.replace("C:\\fakepath\\", "")}`;   
+        if(imgSrcGame == "") {
+            imgNewPath = 'img/never.jpg';
+        }     
 
         //let game = {id: idGame, name: nameGame, price: priceGame, description: descriptionGame, imgSrc: imgNewPath, category: categoryGame, clasificacion: clasificationGame};
         let game = new Game(idGame, nameGame, priceGame, descriptionGame, imgNewPath, categoryGame, clasificationGame);  
