@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
             imgNewPath = 'img/never.jpg';
         }     
 
-        //let game = {id: idGame, name: nameGame, price: priceGame, description: descriptionGame, imgSrc: imgNewPath, category: categoryGame, clasificacion: clasificationGame};
         let game = new Game(idGame, nameGame, priceGame, descriptionGame, imgNewPath, categoryGame, clasificationGame);  
                 
         arrayOfGames.push(game);                  
@@ -135,10 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     arrayOfGames.splice(indexOfGame, 1);
             }
         }  
-
-        //localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames));
-        //let games = JSON.parse(localStorage.getItem('JUEGOS')); 
-        //listGamesInTable(games)    
+        
         listGamesInTable(arrayOfGames);     
         localStorage.setItem('JUEGOS', JSON.stringify(arrayOfGames)); 
         cleanAddGameFormInputs();      
@@ -168,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Funcion que captura los datos del juego a modificar y los carga en los inputs correspondientes
     document.getElementById('modify-game').addEventListener('click', function() {
         const selectedGame = document.querySelector('input[name="flexRadioDefault"]:checked');        
-        //let game = arrayOfGames.filter((game) => game.id == selectedGame.id);              
+                      
         let editingRow;        
 
         if (selectedGame) {
@@ -207,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function modifyGame(id){
         let gamesList = JSON.parse(localStorage.getItem('JUEGOS'));
-        console.log(gamesList)
+        
         //aca de nuevo, cada vez que hago el getItem del local storage tengo que volver a instanciar esos objetos, es decir volver a combertir esos objetos en instancias de la clase Game
         gamesList = gamesList.map(gameData => new Game(
             gameData._id,
@@ -218,8 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gameData._category,
             gameData._clasificacion,
         )) 
-        console.log(gamesList)
-
+        
         let indexGameToBeModify = gamesList.findIndex((game) => game.id == id)
 
         let newName = document.getElementById('formGroupExampleInput').value;
@@ -247,15 +242,3 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
 
-
-
-/*class PersistenceController{
-    static name(params) {
-        console.log(params)
-    }
-
-    static saveGame(){
-
-    }
-
-}*/

@@ -3,20 +3,7 @@ import { Game } from './classGame.js';
 import { users } from "./purchases.js";
 import { CheckUserId } from "./purchases.js";
 
-document.addEventListener('DOMContentLoaded', () => {     
-    
-    /*let cartAcumulated = JSON.parse(localStorage.getItem('cartAcumulated')) || [];
-    if(cartAcumulated.length != 0){  
-        cartAcumulated = cartAcumulated.map(gameData => new Game(
-            gameData._id,
-            gameData._name,
-            gameData._price,
-            gameData._description,
-            gameData._imgSrc,
-            gameData._category,
-            gameData._clasificacion,
-        ));       
-    }*/
+document.addEventListener('DOMContentLoaded', () => {       
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     if(cart.length != 0){
@@ -56,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     selectBoxWitUser.addEventListener('change', (e) =>{        
         let userIdCurrentlySelected = parseInt(CheckUserId());
         localStorage.setItem('userIdCurrentlySelected', JSON.stringify(userIdCurrentlySelected));
-        //console.log(userIdCurrentlySelected) 
+        
     })   
     
     let userPurchases = JSON.parse(localStorage.getItem('userPurchases')) || users;
@@ -100,13 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 userPurchases[indexUserSelected].items.push(game);                
                 alert(`${game.name} agregado al carrito de ${userPurchases[indexUserSelected].name.charAt(0).toUpperCase() + userPurchases[indexUserSelected].name.slice(1)}`);
 
-                /*cart.push(game);                              
-                localStorage.setItem('cart', JSON.stringify(cart));
-                alert(`${game.name} agregado al carrito.`);*/
-
-                //cartAcumulated.push(game);
                 localStorage.setItem('userPurchases', JSON.stringify(userPurchases));
-                //localStorage.setItem('cartAcumulated', JSON.stringify(cartAcumulated));                                          
+                                                         
 
             })
     
@@ -164,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showGamesList(GAMES);
     addCategories(filterCategories(GAMES));
-    addEventOnCategoryItem()
-
+    addEventOnCategoryItem();
     
 }); 

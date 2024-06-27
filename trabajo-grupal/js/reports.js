@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             labels: salesPerGame.map(game => game.name),
             datasets: [{
                 label: 'Unidades por juego vendidas',
-                data: salesPerGame.map(game => game.unitsSelling), //netSellingAcumulated.map(game => game.unitsSelling),
+                data: salesPerGame.map(game => game.unitsSelling),
                 borderWidth: 2,
             }]
         },
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 labels: salesPerGame.map(game => game.name),
                 datasets: [{
                     label: 'Ingresos por juego',
-                    data: salesPerGame.map(game => game.total), //netSellingAcumulated.map(game => game.unitsSelling),
+                    data: salesPerGame.map(game => game.total),
                     borderWidth: 2,
                 }]
             },
