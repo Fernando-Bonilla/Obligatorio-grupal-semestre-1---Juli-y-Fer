@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let title = document.getElementById('title-crear-juego');
         title.innerHTML = 'Crear juego';
         let button = document.getElementById('crear-juego');
-        button.innerHTML = 'Argegar';
+        button.innerHTML = 'Agregar';
     }
     
 });
