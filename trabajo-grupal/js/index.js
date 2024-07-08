@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let img = document.createElement('img');
             img.src = gamesData[i].imgSrc;
-            img.alt = 'Juego ${gamesData[i].id}';
+            img.alt = `Juego ${gamesData[i].id}`;
             
             let gameTitle = document.createElement('h2');
             gameTitle.textContent = gamesData[i].name;
